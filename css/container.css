@@ -1,0 +1,315 @@
+@font-face {
+	font-family: Zombie;
+	src: url(../font/zombie.ttf);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: Verdana;
+  background-image: -moz-linear-gradient(90% 10% 270deg, #fff, #ffc);
+  background-color: #000;
+}
+
+button {
+  border: 1px #a00 solid;
+  padding: 3px;
+  font-size: 12px;
+  color: #ddd;
+  text-shadow: 0 0 2px #000;
+  -moz-border-radius: 5px;
+  -moz-box-shadow: 0 0 2px #222;
+  background-image: -moz-linear-gradient(90% 10% 270deg, #d22, #b11);
+  background-color: #d22;
+}
+
+label {
+  display: inline-block;
+  text-shadow: 0 0 2px #999;
+  font-size: 12px;
+  padding: 6px;
+}
+
+button:hover {
+  background-image: -moz-linear-gradient(90% 10% 270deg, #f22, #d11);
+}
+
+aside#github {
+  background-image: -moz-linear-gradient(0% 0 270deg, #00C17C, #00A559);
+  border-bottom: 1px solid #007239;
+  border-top: 1px solid #23CA8E;
+  -moz-box-shadow: 0 0 1px #222;
+  position: absolute;
+  width: 120px;
+  right: 15px;
+  bottom: 20px;
+}
+
+aside#github:hover {
+  background-image: -moz-linear-gradient(0% 0 270deg, #007CC1, #0059A5);
+  border-bottom: 1px solid #003972;
+  border-top: 1px solid #238ECA;
+}
+
+aside#github a {
+  color: #FFFFFF;
+  font-size: 12px;
+  display: block;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+aside#gamejam {
+  position: absolute;
+  right: 5px;
+  bottom: 65px;
+}
+
+aside#gamejam img {
+  display: block;
+}
+
+#container-wrapper {
+  position: absolute;
+  -z-index: 1;
+  top: 50%;
+  left: 50%;
+}
+
+#wheel-help {
+  position: absolute;
+  top: -250px;
+  right: -800px;
+  width: 255px;
+  padding: 10px 30px;
+  font-size: 11px;
+  border: 1px #ccc solid;
+  -moz-border-radius: 5px;
+  -moz-box-shadow: 0 0 5px #ccc;
+  background-color: #fff;
+  background: #fff url(../img/info.png) 280px 10px no-repeat;
+}
+
+#wheel-help ul li {
+  padding: 6px 10px 7px 30px;
+}
+
+#wheel-help ul li.salz {
+  background: url(../img/salt-small.png) 0 0 no-repeat;
+}
+
+#wheel-help ul li.paprika {
+  background: url(../img/paprika-small.png) 0 0 no-repeat;
+}
+
+#wheel-help ul li.pepperoni {
+  background: url(../img/chili-small.png) 0 0 no-repeat;
+}
+
+#wheel-help ul li.feuer {
+  background: url(../img/burn-small.png) 0 0 no-repeat;
+}
+
+#wheel-help ul li.mutter {
+  background: url(../img/mother-small.png) 0 0 no-repeat;
+}
+
+#wheel-help ul li.magnet {
+  background: url(../img/magnet-small.png) 0 0 no-repeat;
+}
+
+#container {
+  position: absolute;
+  z-index: 1;
+  width: 1000px;
+  height: 600px;
+  top: -300px;
+  left: -500px;
+  border: 1px #ccc solid;
+  -moz-border-radius: 5px;
+  -moz-box-shadow: 0 0 5px #ccc;
+  background-color: #fff;
+}
+
+#container-gradient {
+  -moz-border-radius: 5px;
+  margin: 5px;
+  background-image: -moz-linear-gradient(99% 1% 270deg, #888, #000);
+}
+
+#playground {
+  width: 990px;
+  height: 590px;
+  -moz-border-radius: 5px;
+  background: url(../img/grass.png) 0 300px no-repeat;
+}
+
+#playground #moon {
+  position: absolute;
+  left: 550px;
+  top: 100px;
+}
+
+#menu-top {
+  position: absolute;
+  width: 710px;
+  height: 50px;
+  margin: 10px;
+  background-color: #fff;
+  opacity: 0.8;
+  border: 1px #888 solid;
+  -moz-border-radius: 5px;
+  -moz-box-shadow: 0 0 5px #ccc;
+}
+
+#menu-top ul {
+  margin: 5px;
+}
+
+#menu-top ul li {
+  display: inline-block;
+}
+
+#menu-top .zombie-icon {
+  opacity: 0.5;
+}
+
+#menu-top .dead {
+  opacity: 1;
+}
+
+#menu-top #points {
+  position: absolute;
+  margin: 0 5px;
+  font-family: Zombie;
+  font-size: 44px;
+  color: #d22;
+  right: 0;
+}
+
+#menu-right {
+  position: absolute;
+  right: 5px;
+  width: 230px;
+  height: 550px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #fff;
+  opacity: 0.8;
+  border: 1px #888 solid;
+  -moz-border-radius: 5px;
+  -moz-box-shadow: 0 0 5px #ccc;
+}
+
+#menu-right .bar {
+  display: inline-block;
+  height: 6px;
+  -moz-border-radius: 2px;
+  -moz-box-shadow: 0 0 2px #222;
+  background-image: -moz-linear-gradient(90% 10% 270deg, #aaa, #888);
+  background-color: #888;
+  border: 1px #333 solid;
+}
+
+#menu-right .glow {
+  height: 6px;
+  -moz-border-radius: 2px;
+  background-image: -moz-linear-gradient(90% 10% 270deg, #d22, #b11);
+  background-color: #888;
+}
+
+#wheel-container #knob {
+  position: absolute;
+  z-index: 10;
+  left: 122px;
+  top: 4px;
+  width: 5px;
+  height: 12px;
+  border: 1px #333 solid;
+  -moz-box-shadow: 0 0 2px #222;
+  -moz-border-radius: 2px;
+  background-image: -moz-linear-gradient(90% 10% 270deg, #d22, #b11);
+}
+
+#wheel-container #wheel {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  -moz-transform: rotate(-11deg);
+}
+
+#wheel-container .power {
+  margin-top: 230px;
+}
+
+#wheel-container .power button {
+  display: inline-block;
+}
+
+#wheel-container .power .bar {
+  width: 160px;
+}
+
+#wheel-container .power .glow {
+  width: 60px;
+}
+
+#pot-container {
+  position: absolute;
+  bottom: 20px;
+}
+
+#pot-container .power .bar {
+  width: 160px;
+}
+
+#pot-container .power .glow {
+  width: 60px;
+}
+
+#pot-container .heat .bar {
+  width: 160px;
+}
+
+#pot-container .heat .glow {
+  width: 60px;
+}
+
+#pot-container #pot {
+  margin: 10px 55px -25px 55px;
+}
+
+#pot-container #pot-glow {
+  opacity: 0.5;
+  position: relative;
+  margin: 0 58px;
+}
+
+#zombies .grave {
+  position: absolute;
+}
+
+#grave-1 {
+  left: 180px;
+  top: 300px;
+}
+
+#grave-2 {
+  left: 550px;
+  top: 350px;
+}
+
+#grave-3 {
+  left: 350px;
+  top: 330px;
+}
+
+#grave-4 {
+  left: 100px;
+  top: 430px;
+}

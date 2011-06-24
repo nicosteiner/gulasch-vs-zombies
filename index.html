@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gulasch vs. Zombies - Ein HTML5 Browsergame</title>
+    <link type="text/css" href="css/reset-min.css" rel="stylesheet">
+    <link type="text/css" href="css/container.css" rel="stylesheet">
+  </head>
+  <body>
+    <aside id="github">
+      <a href="https://github.com/nicosteiner">Fork me on GitHub</a>
+    </aside>
+    <aside id="gamejam">
+      <img src="img/qooxdoo.png" alt="Qooxdoo Framework">
+      <img src="img/gamejam.png" alt="Gamejam">
+    </aside>
+    <div id="container-wrapper">
+      <div id="wheel-help">
+        <ul>
+          <li class="salz">Salz (+1 Power)</li>
+          <li class="paprika">Paprika (+2 Power)</li>
+          <li class="pepperoni">Pepperoni (+3 Power)</li>
+          <li class="feuer">Feuer (+3 Hitze)</li>
+          <li class="mutter">Anruf von Mutter (Zeit verstreicht)</li>
+          <li class="magnet">Magnet des Bösen (Zombies wachsen)</li>
+        </ul>
+      </div>
+      <div id="container">
+        <div id="container-gradient">
+          <div id="playground">
+            <img src="img/moon.png" id="moon" alt="">
+            <section id="menu-top">
+              <div id="points">1234567890</div>
+              <ul>
+                <li><img src="img/zombie-icon.png" alt="" class="zombie-icon"></li>
+                <li><img src="img/zombie-icon.png" alt="" class="zombie-icon"></li>
+                <li><img src="img/zombie-icon.png" alt="" class="zombie-icon"></li>
+                <li><img src="img/zombie-icon.png" alt="" class="zombie-icon"></li>
+              </ul>
+            </section>
+            <section id="menu-right">
+              <div id="wheel-container">
+                <div id="knob"></div>
+                <img id="wheel" src="img/wheel.png" alt="">
+                <div class="power">
+                  <button>Drehen</button>
+                  <div class="bar" title="Kraft">
+                    <div class="glow"></div>
+                  </div>
+                </div>
+              </div>
+              <div id="pot-container">
+                <div class="power">
+                  <label for="power-bar">
+                    Power:
+                  </label>
+                  <div id="power-bar" class="bar" title="Zombie-Power">
+                    <div class="glow"></div>
+                  </div>
+                </div>
+                <img id="pot" src="img/pot.png" alt="">
+                <img id="pot-glow" src="img/pot-glow.png" alt="">
+                <div class="heat">
+                  <button>Rühern</button>
+                  <div class="bar" title="Hitze">
+                    <div class="glow"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section id="zombies">
+              <img id="grave-1" src="img/grave-1.png" alt="" class="grave">
+              <img id="grave-2" src="img/grave-2.png" alt="" class="grave">
+              <img id="grave-3" src="img/grave-3.png" alt="" class="grave">
+              <img id="grave-4" src="img/grave-3.png" alt="" class="grave">
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- load framework -->
+    <script src="script/qooxdoo/base-min.js" defer></script>
+    <script src="script/qooxdoo/animation-min.js" defer></script>
+    <script src="script/qooxdoo/collection-min.js" defer></script>
+    <script src="script/qooxdoo/keyevent-min.js" defer></script>
+    <script src="script/qooxdoo/xhr-min.js" defer></script>
+    <!-- load own scripts -->
+    <script src="script/init.js" defer></script>
+  </body>
+</html>
