@@ -37,6 +37,10 @@ button:hover {
   background-image: -moz-linear-gradient(90% 10% 270deg, #f22, #d11);
 }
 
+.hidden {
+  display: none;
+}
+
 aside#github {
   background-image: -moz-linear-gradient(0% 0 270deg, #00C17C, #00A559);
   border-bottom: 1px solid #007239;
@@ -84,7 +88,7 @@ aside#gamejam img {
 #wheel-help {
   position: absolute;
   top: -250px;
-  right: -800px;
+  right: -550px;
   width: 255px;
   padding: 10px 30px;
   font-size: 11px;
@@ -93,6 +97,11 @@ aside#gamejam img {
   -moz-box-shadow: 0 0 5px #ccc;
   background-color: #fff;
   background: #fff url(../img/info.png) 280px 10px no-repeat;
+  -moz-transition: all 0.1s ease-out;
+}
+
+#wheel-help:hover {
+  right: -800px;
 }
 
 #wheel-help ul li {
@@ -121,6 +130,58 @@ aside#gamejam img {
 
 #wheel-help ul li.magnet {
   background: url(../img/magnet-small.png) 0 0 no-repeat;
+}
+
+#info-layers{
+  position: absolute;
+  opacity: 0.9;
+  z-index: 100;
+  width: 1000px;
+  height: 600px;
+  top: -300px;
+  left: -500px;
+  border: 1px #ccc solid;
+  -moz-border-radius: 5px;
+  -moz-box-shadow: 0 0 5px #ccc;
+  background-color: #fff;
+}
+
+#info-layers .layer {
+  font-size: 15px;
+  padding: 60px 100px;
+}
+
+#info-layers .layer strong {
+  font-weight: bold;
+}
+
+#info-layers .layer button {
+  font-size: 22px;
+}
+
+#info-layers .layer h1,
+#info-layers .layer h2 {
+  font-family: Zombie;
+  color: #d22;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#info-layers .layer h1 {
+  font-size: 50px;
+}
+
+#info-layers .layer h2 {
+  font-size: 40px;
+}
+
+#info-layers .layer p {
+  margin-bottom: 20px;
+}
+
+#info-layers .layer .dialog {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 #container {
@@ -241,6 +302,7 @@ aside#gamejam img {
   left: 15px;
   top: 10px;
   -moz-transform: rotate(-11deg);
+  -moz-transition: all 0.4s ease-out;
 }
 
 #wheel-container .power {
@@ -256,7 +318,7 @@ aside#gamejam img {
 }
 
 #wheel-container .power .glow {
-  width: 60px;
+  width: 0;
 }
 
 #pot-container {
@@ -269,7 +331,7 @@ aside#gamejam img {
 }
 
 #pot-container .power .glow {
-  width: 60px;
+  width: 12px;
 }
 
 #pot-container .heat .bar {
@@ -288,6 +350,14 @@ aside#gamejam img {
   opacity: 0.5;
   position: relative;
   margin: 0 58px;
+}
+
+#pot-container #pot-status {
+  position: absolute;
+  top: 25px;
+  left: 60px;
+  -moz-transition: all 0.4s ease-in;
+  opacity: 0;
 }
 
 #zombies .grave {
