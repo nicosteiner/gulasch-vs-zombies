@@ -299,6 +299,7 @@ aside#gamejam img {
 
 #wheel-container #wheel {
   position: absolute;
+  z-index: -1;
   left: 15px;
   top: 10px;
   -moz-transform: rotate(-11deg);
@@ -307,6 +308,7 @@ aside#gamejam img {
 
 #wheel-container .power {
   margin-top: 230px;
+  z-index: 10;
 }
 
 #wheel-container .power button {
@@ -319,6 +321,24 @@ aside#gamejam img {
 
 #wheel-container .power .glow {
   width: 0;
+}
+
+#mother-container {
+  position: relative;
+  margin-top: 20px;
+}
+
+#mother-container .phone {
+  margin-left: 15px;
+}
+
+#mother-container .speaking {
+  position: absolute;
+  left: 90px;
+  top: -20px;
+  background: url(../img/bubble.png) 0 0 no-repeat;
+  width: 150px;
+  height: 102px;
 }
 
 #pot-container {
