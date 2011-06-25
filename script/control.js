@@ -8,8 +8,6 @@ GVZ.Control.prototype = {
 
   init: function() {
  
-    var turnWheelButton = document.getElementById('turn-wheel');
-   
     // 0: salt
     // 1: paprika
     // 2: pepperoni
@@ -17,11 +15,21 @@ GVZ.Control.prototype = {
     // 4: mutter
     // 5: magnet
    
-    this.wheelKeys = ['salt', 'paprika', 'pepperoni', 'burn', 'mother', 'magnet'];
+    this.wheelKeys = ['salt', 'paprika', 'chili', 'burn', 'mother', 'magnet'];
    
     this.wheelComponents = [0, 4, 2, 0, 4, 1, 4, 3, 0, 5, 3, 1, 0, 3, 2, 1];
    
     this.wheelButtonLocked = false;
+    
+    this.gulaschPower = 3; // max is 40
+ 
+    this.updateGulaschPowerBar();
+
+    this.heatPower = 60; // max is 160 
+    
+    this.initializeHeatPowerInterval();
+ 
+    var turnWheelButton = document.getElementById('turn-wheel');
    
     if (turnWheelButton) {
     
@@ -51,7 +59,105 @@ GVZ.Control.prototype = {
         
       }, this);
       
+      var stirringButton = document.getElementById('stirring-button');
+      
+      if (stirringButton) {
+
+        qx.event.Registration.addListener(stirringButton, 'click', function(ev) {
+        
+          ev.preventDefault();
+          
+          this.stirrGulasch();
+          
+        }, this);
+
+      }
+      
     }
+  
+  },
+  
+  updateGulaschPowerBar: function() {
+  
+    var glowElement = qx.bom.Collection.query('#power-bar div.glow')[0];
+    
+    if (glowElement) {
+    
+      var glowWidth = this.gulaschPower * 4;
+      
+      qx.bom.element.Style.set(glowElement, 'width', glowWidth + 'px');
+    
+    }
+    
+  },
+  
+  initializeHeatPowerInterval: function() {
+  
+    this.heatPowerInterval = window.setInterval(function(scope) {
+      
+        return function() {
+        
+          if (scope.heatPower < 160 ) {
+          
+            scope.heatPower++;
+          
+            scope.updateHeatPowerBar();
+          
+          }
+        
+        }
+        
+      }(this), 1500);
+  
+  },
+  
+  updateHeatPowerBar: function() {
+
+    this.heatPower > 160  ? this.heatPower = 160 : false;
+    
+    // gulasch is too hot and looses power
+    
+    if (this.heatPower > 140) {
+    
+      this.gulaschPower--;
+      
+      this.gulaschPower < 0 ? this.gulaschPower = 0 : false;
+      
+      this.updateGulaschPowerBar();
+    
+    }
+    
+    var glowElement = qx.bom.Collection.query('#heat-bar div.glow')[0];
+    
+    if (glowElement) {
+    
+      var glowWidth = this.heatPower;
+      
+      qx.bom.element.Style.set(glowElement, 'width', glowWidth + 'px');
+    
+    }
+    
+    var potGlowElement = document.getElementById('pot-glow');
+    
+    if (potGlowElement && this.heatPower > 80) {
+    
+      var opacity = Math.round(this.heatPower / 16) / 10;
+    
+      qx.bom.element.Style.set(potGlowElement, 'opacity', opacity);      
+    
+    }
+    
+  },
+  
+  stirrGulasch: function() {
+  
+    // stirring Gulasch reduces heat
+    
+    this.heatPower--;
+    
+    this.heatPower < 0 ? this.heatPower = 0 : false;
+    
+    this.updateHeatPowerBar();
   
   },
   
@@ -108,7 +214,6 @@ GVZ.Control.prototype = {
         var rotation = Math.round(360 / 16 * (this.wheelPower / 10));
     
         wheel.style.MozTransform = 'rotate(-' + rotation + 'deg)';
-        wheel.style.MozTransition = 'all 0.4s ease-out';
         
       }
       
@@ -169,6 +274,40 @@ GVZ.Control.prototype = {
   
   updateGameStatus: function(index) {
 
+    var wheelComponent = this.wheelComponents[index];
+    
+    if (wheelComponent == 0) {
+    
+      this.gulaschPower = this.gulaschPower + 1;
+      
+      this.updateGulaschPowerBar();
+    
+    }
+  
+    if (wheelComponent == 1) {
+    
+      this.gulaschPower = this.gulaschPower + 2;
+      
+      this.updateGulaschPowerBar();
+    
+    }
+  
+    if (wheelComponent == 2) {
+    
+      this.gulaschPower = this.gulaschPower + 3;
+      
+      this.updateGulaschPowerBar();
+    
+    }
+  
+    if (wheelComponent == 3) {
+    
+      this.heatPower = this.heatPower + 10;
+      
+      this.updateHeatPowerBar();
+    
+    }
+  
     var wheelKey = this.wheelKeys[this.wheelComponents[index]];
 
     var potStatusGraphic = document.getElementById('pot-status');

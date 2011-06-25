@@ -24,6 +24,31 @@
           <li class="magnet">Magnet des Bösen (Zombies wachsen)</li>
         </ul>
       </div>
+	  <div id="info-layers" class="hidden">
+	    <div id="info-layer-1" class="layer">
+		  <h1>Gulasch vs. Zombies</h1>
+		  <p>
+        Die Zombies sind los - und es gibt nur einen Weg, sie aufzuhalten. Bewirf sie mit gekochtem, gut gewürztem Gulasch,
+        bevor sie komplett aus ihren Gräbern steigen. Keine ganz einfache Sache - denn da sind die nervigen Anrufe Deiner
+        Mutter und der <strong>Magnet des Bösen</strong>!
+		  </p>
+		  <div class="dialog">
+		    <button id="start-game">Spiel starten</button>
+		  </div>
+		  <h2>Spielregeln</h2>
+		  <p>
+        Pro Runde musst Du eine bestimmte Anzahl Zombies durch Bewerfen mit Gulasch töten.
+        Klicke dazu auf den Gulaschkessel und und anschließend auf einen der Zombies. Das Gulasch ist anfangs nur schlecht gewürzt,
+        deshalb fügt es den Zombies nur wenig Schaden zu. Durch Drehen am Rad kann das Gulasch mit Salz, Paprika und Pepperoni
+        nachgewürzt werden. Doch Vorsicht! Stetig erhöht sich die Hitze des Gulaschofens. Deshalb ist regelmäßiges Umrühren Pflicht.
+        Wenn Mutter anruft, geht das leider nicht. Und auch vor dem <strong>Magnet des Bösen</strong> solltest Du Dich in Acht nehmen -
+        er sorgt dafür, dass die Zombies ihre Gräber schneller verlassen.
+		  </p>
+		  <h2>
+        Viel Spass!
+		  </h2>
+		</div>
+	  </div>
       <div id="container">
         <div id="container-gradient">
           <div id="playground">
@@ -42,7 +67,7 @@
                 <div id="knob"></div>
                 <img id="wheel" src="img/wheel.png" alt="">
                 <div class="power">
-                  <button>Drehen</button>
+                  <button id="turn-wheel">Drehen</button>
                   <div class="bar" title="Kraft">
                     <div class="glow"></div>
                   </div>
@@ -59,9 +84,10 @@
                 </div>
                 <img id="pot" src="img/pot.png" alt="">
                 <img id="pot-glow" src="img/pot-glow.png" alt="">
+                <img id="pot-status" src="img/paprika.png" alt="" class="hidden">
                 <div class="heat">
-                  <button>Rühern</button>
-                  <div class="bar" title="Hitze">
+                  <button id="stirring-button">Rühren</button>
+                  <div class="bar" id="heat-bar" title="Hitze">
                     <div class="glow"></div>
                   </div>
                 </div>
@@ -77,13 +103,19 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      // create namespace
+      var GVZ = {};
+    </script>
     <!-- load framework -->
-    <script src="script/qooxdoo/base-min.js" defer></script>
-    <script src="script/qooxdoo/animation-min.js" defer></script>
-    <script src="script/qooxdoo/collection-min.js" defer></script>
-    <script src="script/qooxdoo/keyevent-min.js" defer></script>
-    <script src="script/qooxdoo/xhr-min.js" defer></script>
+    <script src="script/qooxdoo/base-min.js"></script>
+    <script src="script/qooxdoo/animation-min.js"></script>
+    <script src="script/qooxdoo/collection-min.js"></script>
+    <script src="script/qooxdoo/keyevent-min.js"></script>
+    <script src="script/qooxdoo/xhr-min.js"></script>
     <!-- load own scripts -->
-    <script src="script/init.js" defer></script>
+    <script src="script/layers.js"></script>
+    <script src="script/control.js"></script>
+    <script src="script/init.js"></script>
   </body>
 </html>
