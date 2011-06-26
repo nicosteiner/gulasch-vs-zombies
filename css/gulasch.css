@@ -1,0 +1,83 @@
+#gulasch {
+  position: absolute;
+  z-index: 10;
+  left: 200px;
+  top: 200px;
+}
+
+#gulasch .gulasch {
+ -moz-transition: all 0.05s ease-in;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+}
+
+#gulasch.splash .gulasch {
+  opacity: 1;
+}
+
+#gulasch.splash #g1 {
+  top: -15px;
+  right: 15px;
+}
+
+#gulasch.splash #g2 {
+  top: -20px;
+  right: -17px;
+}
+
+#gulasch.splash #g3 {
+  top: 10px;
+  right: 17px;
+}
+
+#gulasch.splash #g4 {
+  top: 15px;
+  right: -17px;
+}
+
+#gulasch.splash #g5 {
+  top: 13px;
+  right: 15px;
+}
+
+#gulasch.splash #g6 {
+  top: -13px;
+  right: -9px;
+}
+
+#gulasch.splash #g7 {
+  top: 9px;
+  right: 0;
+}
+
+#gulasch.splash #g8 {
+  top: 0;
+  right: 11px;
+}
+
+#gulasch.splash #g9 {
+  top: -15px;
+  right: 6px;
+}
+
+#gulasch.splash #g10 {
+  top: 11px;
+  right: 6px;
+}
+
+#gulasch.splash #g11 {
+  top: 2px;
+  right: -15px;
+}
+
+#gulasch.splash #g12 {
+  top: 0;
+  right: -20px;
+}
+
+#gulasch.splash #g13 {
+  top: -4px;
+  right: -10px;
+}

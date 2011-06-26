@@ -228,20 +228,27 @@ aside#gamejam img {
   -moz-box-shadow: 0 0 5px #ccc;
 }
 
-#menu-top ul {
-  margin: 5px;
+#menu-top #time {
+  position: absolute;
 }
 
-#menu-top ul li {
+#menu-top #time label {
   display: inline-block;
+  font-family: Zombie;
+  font-size: 44px;
+  color: #d22;
 }
 
-#menu-top .zombie-icon {
-  opacity: 0.5;
+#menu-top #time .bar {
+  position: absolute;
+  top: 25px;
+  left: 110px;
+  width: 400px;
 }
 
-#menu-top .dead {
-  opacity: 1;
+#menu-top #time .glow {
+  width: 400px;
+  background-image: -moz-linear-gradient(90% 10% 270deg, #ff0, #dd0);
 }
 
 #menu-top #points {
@@ -267,6 +274,7 @@ aside#gamejam img {
   -moz-box-shadow: 0 0 5px #ccc;
 }
 
+#menu-top .bar,
 #menu-right .bar {
   display: inline-block;
   height: 6px;
@@ -277,6 +285,7 @@ aside#gamejam img {
   border: 1px #333 solid;
 }
 
+#menu-top .glow,
 #menu-right .glow {
   height: 6px;
   -moz-border-radius: 2px;
@@ -324,21 +333,25 @@ aside#gamejam img {
 }
 
 #mother-container {
-  position: relative;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 120px;
 }
 
 #mother-container .phone {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 #mother-container .speaking {
   position: absolute;
   left: 90px;
-  top: -20px;
+  top: -30px;
   background: url(../img/bubble.png) 0 0 no-repeat;
   width: 150px;
   height: 102px;
+}
+
+#mother-container .speaking img {
+  margin-top: 50px;
 }
 
 #pot-container {
@@ -364,6 +377,10 @@ aside#gamejam img {
 
 #pot-container #pot {
   margin: 10px 55px -25px 55px;
+}
+
+#pot-container #pot:hover {
+  cursor: pointer;
 }
 
 #pot-container #pot-glow {

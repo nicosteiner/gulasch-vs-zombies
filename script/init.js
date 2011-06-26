@@ -10,13 +10,23 @@ GVZ.Init.prototype = {
  
   if (typeof GVZ.Layers !== 'undefined') {
   
-    var gvzLayers = new GVZ.Layers();
+    this.gvzLayers = new GVZ.Layers();
   
   }
   
+ },
+ 
+ startGame: function() {
+
   if (typeof GVZ.Control !== 'undefined') {
   
-    var gvzControl = new GVZ.Control();
+    this.gvzControl = new GVZ.Control();
+  
+  }
+  
+  if (typeof GVZ.Zombies !== 'undefined') {
+  
+    this.gvzZombies = new GVZ.Zombies();
   
   }
   

@@ -8,6 +8,10 @@ GVZ.Control.prototype = {
 
   init: function() {
  
+    this.initializeTimeInterval();
+  
+    this.motherIsTalking = false;
+ 
     // 0: salt
     // 1: paprika
     // 2: pepperoni
@@ -37,7 +41,7 @@ GVZ.Control.prototype = {
       
         ev.preventDefault();
         
-        if (!this.wheelButtonLocked) {
+        if (!this.wheelButtonLocked && !this.motherIsTalking) {
         
           this.wheelButtonDown = true;
           
@@ -77,9 +81,53 @@ GVZ.Control.prototype = {
   
   },
   
+  initializeTimeInterval: function() {
+  
+    this.elapsedTime = 0;
+  
+    var interval = 750;
+    
+    gvz.gvzLayers.difficulty == 'medium' ? interval = 500 : false;
+  
+    gvz.gvzLayers.difficulty == 'high' ? interval = 250 : false;
+    
+    var glowElement = qx.bom.Collection.query('#time div.glow')[0];
+    
+    if (glowElement) {
+    
+      this.timeInterval = window.setInterval(function(scope, glowElement) {
+      
+        return function() {
+    
+          scope.elapsedTime++; 
+    
+          qx.bom.element.Style.set(glowElement, 'width', (400 - scope.elapsedTime) + 'px');
+          
+          if (scope.elapsedTime >= 400) {
+          
+            scope.gameLost();
+          
+          }
+          
+        }
+        
+      }(this, glowElement), interval);
+    
+    }
+    
+  },
+  
+  gameLost: function() {
+  
+    document.location.href = 'lost.html';
+  
+  },
+  
   updateGulaschPowerBar: function() {
   
     var glowElement = qx.bom.Collection.query('#power-bar div.glow')[0];
+    
+    this.gulaschPower > 40 ? this.gulaschPower = 40 : false;
     
     if (glowElement) {
     
@@ -99,7 +147,13 @@ GVZ.Control.prototype = {
         
           if (scope.heatPower < 160 ) {
           
-            scope.heatPower++;
+            scope.heatPower = scope.heatPower + 2;
+          
+            if (scope.heatPower == 120 || scope.heatPower == 121) {
+            
+              document.getElementById('audio-too-much-heat').play();
+              
+            }
           
             scope.updateHeatPowerBar();
           
@@ -117,9 +171,9 @@ GVZ.Control.prototype = {
     
     // gulasch is too hot and looses power
     
-    if (this.heatPower > 140) {
+    if (this.heatPower > 120) {
     
-      this.gulaschPower--;
+      this.gulaschPower = this.gulaschPower - 2;
       
       this.gulaschPower < 0 ? this.gulaschPower = 0 : false;
       
@@ -211,6 +265,24 @@ GVZ.Control.prototype = {
 
     if (this.wheelPower && wheel) {
       
+        // make it hard to "trick" in the first and last quarter
+      
+        if (this.wheelPower < 40) {
+        
+          var randomPart = Math.round(Math.random() * 40);
+
+          this.wheelPower = this.wheelPower + randomPart;
+        
+        }        
+      
+        if (this.wheelPower > 120) {
+        
+          var randomPart = Math.round(Math.random() * 40);
+
+          this.wheelPower = this.wheelPower - randomPart;
+        
+        }        
+      
         var rotation = Math.round(360 / 16 * (this.wheelPower / 10));
     
         wheel.style.MozTransform = 'rotate(-' + rotation + 'deg)';
@@ -271,7 +343,6 @@ GVZ.Control.prototype = {
   
   },
   
-  
   updateGameStatus: function(index) {
 
     var wheelComponent = this.wheelComponents[index];
@@ -304,7 +375,37 @@ GVZ.Control.prototype = {
     
       this.heatPower = this.heatPower + 10;
       
+      if (this.heatPower >= 140 && this.heatPower < 150) {
+      
+        document.getElementById('audio-too-much-heat').play();
+        
+      }
+      
       this.updateHeatPowerBar();
+    
+    }
+  
+    if (wheelComponent == 4) {
+    
+      setTimeout(function(scope) {
+      
+        return function() {
+        
+          scope.motherIsCalling();
+    
+        }
+      
+      }(this), 1000);
+      
+    }
+  
+    if (wheelComponent == 5) {
+    
+      this.gulaschPower = 0;
+      
+      this.elapsedTime = 400 - Math.round((400 - this.elapsedTime) / 2);
+      
+      this.updateGulaschPowerBar();
     
     }
   
@@ -332,6 +433,69 @@ GVZ.Control.prototype = {
 
     }
     
+  },
+  
+  motherIsCalling: function() {
+  
+    var motherContainer = document.getElementById('mother-container');
+  
+    var potContainer = document.getElementById('pot-container');
+  
+    if (motherContainer && potContainer) {
+    
+      qx.bom.element.Class.add(potContainer, 'hidden');
+    
+      qx.bom.element.Class.remove(motherContainer, 'hidden');
+    
+      this.motherIsTalking = true;
+    
+      // play sound
+      
+      document.getElementById('audio-mother-calling').play();
+    
+      // visualize mother conversation
+    
+      setTimeout(function() {
+      
+        qx.bom.element.Class.add(document.getElementById('mother-girlfriend'), 'hidden');
+        qx.bom.element.Class.remove(document.getElementById('mother-baby'), 'hidden');
+      
+      }, 2250);
+      
+      setTimeout(function() {
+      
+        qx.bom.element.Class.add(document.getElementById('mother-baby'), 'hidden');
+        qx.bom.element.Class.remove(document.getElementById('mother-letter'), 'hidden');
+      
+      }, 4500);      
+      
+      setTimeout(function() {
+      
+        qx.bom.element.Class.add(document.getElementById('mother-letter'), 'hidden');
+        qx.bom.element.Class.remove(document.getElementById('mother-home'), 'hidden');
+      
+      }, 6750);
+      
+      setTimeout(function(scope) {
+      
+        return function() {
+        
+          qx.bom.element.Class.add(document.getElementById('mother-home'), 'hidden');
+          qx.bom.element.Class.remove(document.getElementById('mother-girlfriend'), 'hidden');
+          
+          // show pot after conversation
+          
+          qx.bom.element.Class.add(document.getElementById('mother-container'), 'hidden');
+          qx.bom.element.Class.remove(document.getElementById('pot-container'), 'hidden');
+        
+          scope.motherIsTalking = false;
+          
+        }
+      
+      }(this), 9000);
+      
+    }
+  
   }
 
 };

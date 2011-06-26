@@ -1,0 +1,282 @@
+.zombie-status {
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+  height: 6px;
+  -moz-border-radius: 2px;
+  -moz-box-shadow: 0 0 2px #222;
+  background-image: -moz-linear-gradient(90% 10% 270deg, #555, #333);
+  background-color: #888;
+  border: 1px #333 solid;
+}
+
+.zombie-status .glow {
+  width: 100px;
+  height: 6px;
+  -moz-border-radius: 2px;
+  background-image: -moz-linear-gradient(90% 10% 270deg, #2d2, #1b1);
+  background-color: #888;
+}
+
+.zombie-target.hover {
+  cursor: crosshair;
+}
+
+.zombie-target.dead,
+.zombie-status.dead {
+  -moz-transition: all 1.5s ease-out;
+  opacity: 0;
+}
+
+.body {
+  position: absolute;
+}
+
+.zombie-target.move-right .body,
+.zombie-target.move-left .body {
+  -moz-transition: all 0.5s ease-out;
+}
+
+/* ZOMBIE 1 */
+
+#zombie-1 {
+  position: absolute;
+  left: 120px;
+  top: 250px;
+}
+
+#zombie-1-status {
+  z-index: 1;
+  left: 150px;
+  top: 230px;
+}
+
+#zombie-1 .head {
+  z-index: 1;
+  left: 80px;
+}
+
+#zombie-1 .torso {
+  top: 40px;
+  left: 20px;
+}
+
+#zombie-1 .arm-left {
+  z-index: 1;
+  top: 100px;
+  left: 0;
+}
+
+#zombie-1 .arm-right {
+  z-index: 1;
+  top: 60px;
+  left: 110px;
+}
+
+#zombie-1.move-left .head {
+  -moz-transform: rotate(-15deg);
+  left: 75px;
+}
+
+#zombie-1.move-left .arm-left {
+  -moz-transform: rotate(20deg);
+  left: -10px;
+}
+
+#zombie-1.move-left .arm-right {
+  -moz-transform: rotate(-10deg);
+  left: 120px;
+  top: 55px;
+}
+
+#zombie-1.move-right .head {
+  -moz-transform: rotate(15deg);
+  left: 85px;
+}
+
+#zombie-1.move-right .arm-left {
+  -moz-transform: rotate(-20deg);
+  left: 10px;
+}
+
+#zombie-1.move-right .arm-right {
+  -moz-transform: rotate(10deg);
+  left: 100px;
+  top: 60px;
+}
+
+/* ZOMBIE 2 */
+
+#zombie-2 {
+  position: absolute;
+  left: 450px;
+  top: 250px;
+}
+
+#zombie-2-status {
+  z-index: 1;
+  left: 480px;
+  top: 220px;
+}
+
+#zombie-2 .head {
+  z-index: 1;
+  left: 25px;
+}
+
+#zombie-2 .torso {
+  top: 40px;
+  left: 0;
+}
+
+#zombie-2 .arm-left {
+  z-index: 1;
+  top: 0;
+  left: 60px;
+}
+
+#zombie-2 .arm-right {
+  z-index: 1;
+  top: 0;
+  left: 5px;
+}
+
+#zombie-2.move-left .head {
+  -moz-transform: rotate(-15deg);
+  left: 20px;
+}
+
+#zombie-2.move-left .arm-left {
+  -moz-transform: rotate(20deg);
+  left: 70px;
+  top: 0;
+}
+
+#zombie-2.move-left .arm-right {
+  -moz-transform: rotate(-10deg);
+  left: 0;
+  top: 0;
+}
+
+/* ZOMBIE 3 */
+
+#zombie-3 {
+  position: absolute;
+  left: 270px;
+  top: 220px;
+}
+
+#zombie-3-status {
+  z-index: 1;
+  left: 300px;
+  top: 200px;
+}
+
+#zombie-3 .head {
+  z-index: 1;
+  left: 45px;
+  top: 8px;
+  -moz-transform: rotate(10deg);
+}
+
+#zombie-3 .torso {
+  top: 40px;
+  left: 20px;
+}
+
+#zombie-3 .arm-right {
+  z-index: 1;
+  -moz-transform: rotate(10deg);
+  left: 80px;
+  top: 55px;
+}
+
+#zombie-3.move-left .head {
+  -moz-transform: rotate(-15deg);
+  left: 38px;
+}
+
+#zombie-3.move-left .arm-right {
+  -moz-transform: rotate(-10deg);
+  left: 93px;
+  top: 48px;
+}
+
+#zombie-3.move-right .head {
+  -moz-transform: rotate(15deg);
+  left: 45px;
+}
+
+#zombie-3.move-right .arm-right {
+  -moz-transform: rotate(10deg);
+  left: 80px;
+  top: 55px;
+}
+
+/* ZOMBIE 4 */
+
+#zombie-4 {
+  position: absolute;
+  left: 550px;
+  top: 270px;
+}
+
+#zombie-4-status {
+  z-index: 1;
+  left: 580px;
+  top: 250px;
+}
+
+#zombie-4 .head {
+  z-index: 1;
+  left: 80px;
+}
+
+#zombie-4 .torso {
+  top: 40px;
+  left: 20px;
+}
+
+#zombie-4 .arm-left {
+  z-index: 1;
+  top: 100px;
+  left: 0;
+}
+
+#zombie-4 .arm-right {
+  z-index: 1;
+  top: 60px;
+  left: 110px;
+}
+
+#zombie-4.move-left .head {
+  -moz-transform: rotate(-15deg);
+  left: 75px;
+}
+
+#zombie-4.move-left .arm-left {
+  -moz-transform: rotate(20deg);
+  left: -10px;
+}
+
+#zombie-4.move-left .arm-right {
+  -moz-transform: rotate(-10deg);
+  left: 120px;
+  top: 55px;
+}
+
+#zombie-4.move-right .head {
+  -moz-transform: rotate(15deg);
+  left: 85px;
+}
+
+#zombie-4.move-right .arm-left {
+  -moz-transform: rotate(-20deg);
+  left: 10px;
+}
+
+#zombie-4.move-right .arm-right {
+  -moz-transform: rotate(10deg);
+  left: 100px;
+  top: 60px;
+}

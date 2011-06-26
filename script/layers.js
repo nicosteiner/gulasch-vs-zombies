@@ -16,6 +16,10 @@ GVZ.Layers.prototype = {
       
         ev.preventDefault();
         
+        // save difficulty
+        
+        this.difficulty = document.getElementById('difficulty').value;
+        
         // hide welcome layer
         
         if (document.getElementById('info-layer-1')) {
@@ -24,8 +28,6 @@ GVZ.Layers.prototype = {
           
           this.hideInfoLayers();
           
-          // start game here
-        
         }
       
       }, this);
@@ -40,9 +42,13 @@ GVZ.Layers.prototype = {
   
       qx.bom.element.Class.add(document.getElementById('info-layers'), 'hidden');
     
-      this.hideInfoLayers();
-    
       // start game here
+      
+      // play intro audio
+      
+      document.getElementById('audio-intro').play();
+      
+      gvz.startGame();
   
     }
   
