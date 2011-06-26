@@ -4,6 +4,8 @@
     <title>Gulasch vs. Zombies - Ein HTML5 Browsergame</title>
     <link type="text/css" href="css/reset-min.css" rel="stylesheet">
     <link type="text/css" href="css/container.css" rel="stylesheet">
+    <link type="text/css" href="css/zombies.css" rel="stylesheet">
+    <link type="text/css" href="css/gulasch.css" rel="stylesheet">
   </head>
   <body>
     <aside id="github">
@@ -21,46 +23,57 @@
           <li class="pepperoni">Pepperoni (+3 Power)</li>
           <li class="feuer">Feuer (+3 Hitze)</li>
           <li class="mutter">Anruf von Mutter (Zeit verstreicht)</li>
-          <li class="magnet">Magnet des Bösen (Zombies wachsen)</li>
+          <li class="magnet">Magnet des Bösen (0 Power)</li>
         </ul>
       </div>
-	  <div id="info-layers" class="hidden">
-	    <div id="info-layer-1" class="layer">
-		  <h1>Gulasch vs. Zombies</h1>
-		  <p>
-        Die Zombies sind los - und es gibt nur einen Weg, sie aufzuhalten. Bewirf sie mit gekochtem, gut gewürztem Gulasch,
-        bevor sie komplett aus ihren Gräbern steigen. Keine ganz einfache Sache - denn da sind die nervigen Anrufe Deiner
-        Mutter und der <strong>Magnet des Bösen</strong>!
-		  </p>
-		  <div class="dialog">
-		    <button id="start-game">Spiel starten</button>
-		  </div>
-		  <h2>Spielregeln</h2>
-		  <p>
-        Pro Runde musst Du eine bestimmte Anzahl Zombies durch Bewerfen mit Gulasch töten.
-        Klicke dazu auf den Gulaschkessel und und anschließend auf einen der Zombies. Das Gulasch ist anfangs nur schlecht gewürzt,
-        deshalb fügt es den Zombies nur wenig Schaden zu. Durch Drehen am Rad kann das Gulasch mit Salz, Paprika und Pepperoni
-        nachgewürzt werden. Doch Vorsicht! Stetig erhöht sich die Hitze des Gulaschofens. Deshalb ist regelmäßiges Umrühren Pflicht.
-        Wenn Mutter anruft, geht das leider nicht. Und auch vor dem <strong>Magnet des Bösen</strong> solltest Du Dich in Acht nehmen -
-        er sorgt dafür, dass die Zombies ihre Gräber schneller verlassen.
-		  </p>
-		  <h2>
-        Viel Spass!
-		  </h2>
-		</div>
-	  </div>
+      <div id="info-layers" class="">
+        <div id="info-layer-1" class="layer">
+          <h1>Gulasch vs. Zombies</h1>
+          <p>
+            Die Zombies sind los - und es gibt nur einen Weg, sie aufzuhalten. Bewirf sie mit gekochtem, gut gewürztem Gulasch,
+            bevor die Zeit abgelaufen ist. Keine ganz einfache Sache - denn da sind die nervigen Anrufe Deiner
+            Mutter und der <strong>Magnet des Bösen</strong>!
+          </p>
+          <div class="dialog">
+            <label for="difficulty">Schwierigkeit:</label>
+            <select id="difficulty">
+              <option value="easy">Leicht</option>
+              <option value="medium">Mittel</option>
+              <option value="high">Schwer</option>
+            </select>
+          </div>
+          <div class="dialog">
+            <button id="start-game">Spiel starten (läuft nur im Firefox)</button>
+          </div>
+          <h2>Spielregeln</h2>
+          <p>
+            Du musst insgesamt 4 Zombies durch Bewerfen mit Gulasch töten. Klicke dazu auf einen der Zombies. 
+            Das Gulasch ist anfangs nur schlecht gewürzt, deshalb fügt es den Zombies nur wenig Schaden zu. 
+            Durch Drehen am Rad kann das Gulasch mit Salz, Paprika und Pepperoni
+            nachgewürzt werden. Doch Vorsicht! Stetig erhöht sich die Hitze des Gulaschofens. Deshalb ist regelmäßiges Umrühren Pflicht.
+            Wenn Mutter anruft, geht das leider nicht. Und auch vor dem <strong>Magnet des Bösen</strong> solltest Du Dich in Acht nehmen -
+            er sorgt dafür, dass das Gulasch die gesamte Power verliert und weniger Zeit verbleibt.
+          </p>
+          <h2>
+            Viel Spass!
+          </h2>
+          <div class="dialog">
+            <a href="credits.html">Credits</a>
+          </div>
+        </div>
+      </div>
       <div id="container">
         <div id="container-gradient">
           <div id="playground">
             <img src="img/moon.png" id="moon" alt="">
             <section id="menu-top">
-              <div id="points">1234567890</div>
-              <ul>
-                <li><img src="img/zombie-icon.png" alt="" class="zombie-icon"></li>
-                <li><img src="img/zombie-icon.png" alt="" class="zombie-icon"></li>
-                <li><img src="img/zombie-icon.png" alt="" class="zombie-icon"></li>
-                <li><img src="img/zombie-icon.png" alt="" class="zombie-icon"></li>
-              </ul>
+              <div id="time">
+                <label for="timeline">Zeit</label>
+                <div id="timeline" class="bar" title="Verbleibende Zeit">
+                  <div class="glow"></div>
+                </div>
+              </div>
+              <div id="points">0</div>
             </section>
             <section id="menu-right">
               <div id="wheel-container">
@@ -73,13 +86,13 @@
                   </div>
                 </div>
               </div>
-              <div id="mother-container">
+              <div id="mother-container" class="hidden">
                 <img src="img/phone.png" class="phone" alt="">
                 <div class="speaking">
-                  <!--
-                  <img src="img/chili.png" id="mother-home" alt="Wann kommste mal wieder nach hause?">
-                  <img src="img/paprika.png" id="mother-hair" alt="Laß Dir mal wieder die Haare schneiden!">
-                  -->
+                  <img src="img/mother-girlfriend.png" id="mother-girlfriend" alt="">
+                  <img src="img/mother-baby.png" id="mother-baby" alt="" class="hidden">
+                  <img src="img/mother-letter.png" id="mother-letter" alt="" class="hidden">
+                  <img src="img/mother-home.png" id="mother-home" alt="" class="hidden">
                 </div>
               </div>
               <div id="pot-container">
@@ -103,28 +116,96 @@
               </div>
             </section>
             <section id="zombies">
+              <!-- graves -->
               <img id="grave-1" src="img/grave-1.png" alt="" class="grave">
               <img id="grave-2" src="img/grave-2.png" alt="" class="grave">
               <img id="grave-3" src="img/grave-3.png" alt="" class="grave">
               <img id="grave-4" src="img/grave-3.png" alt="" class="grave">
+              <!-- zombies -->
+              <div id="zombie-1" class="zombie-target">
+                <img src="img/zombie-1/kopf.png" alt="" class="body head">
+                <img src="img/zombie-1/torso.png" alt="" class="body torso">
+                <img src="img/zombie-1/arm-links.png" alt="" class="body arm-left">
+                <img src="img/zombie-1/arm-rechts.png" alt="" class="body arm-right">
+              </div>
+              <div id="zombie-2" class="zombie-target">
+                <img src="img/zombie-2/kopf.png" alt="" class="body head">
+                <img src="img/zombie-2/torso.png" alt="" class="body torso">
+                <img src="img/zombie-2/arm-rechts.png" alt="" class="body arm-left">
+                <img src="img/zombie-2/arm-links.png" alt="" class="body arm-right">
+              </div>
+              <div id="zombie-3" class="zombie-target">
+                <img src="img/zombie-3/kopf.png" alt="" class="body head">
+                <img src="img/zombie-3/torso.png" alt="" class="body torso">
+                <img src="img/zombie-3/arm-rechts.png" alt="" class="body arm-right">
+              </div>
+              <div id="zombie-4" class="zombie-target">
+                <img src="img/zombie-1/kopf.png" alt="" class="body head">
+                <img src="img/zombie-1/torso.png" alt="" class="body torso">
+                <img src="img/zombie-1/arm-links.png" alt="" class="body arm-left">
+                <img src="img/zombie-1/arm-rechts.png" alt="" class="body arm-right">
+              </div>
+              <!-- zombie status -->
+              <div id="zombie-1-status" class="zombie-status">
+                <div class="glow"></div>
+              </div>
+              <div id="zombie-2-status" class="zombie-status">
+                <div class="glow"></div>
+              </div>
+              <div id="zombie-3-status" class="zombie-status">
+                <div class="glow"></div>
+              </div>
+              <div id="zombie-4-status" class="zombie-status">
+                <div class="glow"></div>
+              </div>
             </section>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- gulasch -->
+    <div id="gulasch">
+      <img src="img/gulasch-1.png" alt="" class="gulasch" id="g1">
+      <img src="img/gulasch-2.png" alt="" class="gulasch" id="g2">
+      <img src="img/gulasch-3.png" alt="" class="gulasch" id="g3">
+      <img src="img/gulasch-4.png" alt="" class="gulasch" id="g4">
+      <img src="img/gulasch-5.png" alt="" class="gulasch" id="g5">
+      <img src="img/gulasch-1.png" alt="" class="gulasch" id="g6">
+      <img src="img/gulasch-2.png" alt="" class="gulasch" id="g7">
+      <img src="img/gulasch-3.png" alt="" class="gulasch" id="g8">
+      <img src="img/gulasch-4.png" alt="" class="gulasch" id="g9">
+      <img src="img/gulasch-5.png" alt="" class="gulasch" id="g10">
+      <img src="img/gulasch-1.png" alt="" class="gulasch" id="g11">
+      <img src="img/gulasch-2.png" alt="" class="gulasch" id="g12">
+      <img src="img/gulasch-3.png" alt="" class="gulasch" id="g13">
+    </div>
+    
+    <!-- audio area for all game sounds -->
+    
+    <audio id="audio-intro" src="sound/intro.wav">
+    <audio id="audio-mother-calling" src="sound/mother-calling.wav">
+    <audio id="audio-too-much-heat" src="sound/too-much-heat.wav">
+    <audio id="audio-splash" src="sound/splash.wav">
+    <audio id="audio-zombie-dies" src="sound/zombie-dies.wav">
+    
     <script type="text/javascript">
       // create namespace
       var GVZ = {};
     </script>
+    
     <!-- load framework -->
     <script src="script/qooxdoo/base-min.js"></script>
     <script src="script/qooxdoo/animation-min.js"></script>
     <script src="script/qooxdoo/collection-min.js"></script>
     <script src="script/qooxdoo/keyevent-min.js"></script>
     <script src="script/qooxdoo/xhr-min.js"></script>
+    
     <!-- load own scripts -->
     <script src="script/layers.js"></script>
     <script src="script/control.js"></script>
+    <script src="script/zombies.js"></script>
     <script src="script/init.js"></script>
+    
   </body>
 </html>
